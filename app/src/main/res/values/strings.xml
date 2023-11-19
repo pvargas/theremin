@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Theremin</string>
+    <string name="instructions">Move one hand closer or farther away from the device to change pitch</string>
+</resources>
