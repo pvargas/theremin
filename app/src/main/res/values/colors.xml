@@ -7,4 +7,19 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+
+    <color name="mp_color_primary">#FFBB86FC</color>
+    <color name="mp_color_primary_variant">#FF6200EE</color>
+    <color name="mp_color_primary_dark">#FF3700B3</color>
+    <color name="mp_color_secondary">#FF03DAC5</color>
+    <color name="mp_color_secondary_variant">#FF018786</color>
+    <color name="mp_color_error">#B00020</color>
+    <color name="toolbar_background">#E0E0E0</color>
+    <color name="ic_launcher_background">#FFFFFF</color>
+    <color name="bottom_sheet_background">#EEEEEE</color>
+    <color name="bottom_sheet_text_color">@android:color/black</color>
+    <color name="icActive">#FFFFFFFF</color>
+    <color name="icFocused">#DDFFFFFF</color>
+    <color name="icPressed">#AAFFFFFF</color>
 </resources>

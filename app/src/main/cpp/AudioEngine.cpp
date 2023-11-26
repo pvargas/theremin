@@ -92,3 +92,7 @@ void AudioEngine::setPitch(float multiplier) {
     int32_t sampleRate = AAudioStream_getSampleRate(stream_);
     oscillator_.setSampleRateWithMultiplier(sampleRate, multiplier);
 }
+
+void AudioEngine::setVolume(float newVolume) {
+    oscillator_.setAmplitude(newVolume);
+}

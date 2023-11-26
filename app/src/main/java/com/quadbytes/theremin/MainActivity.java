@@ -1,6 +1,7 @@
 package com.quadbytes.theremin;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.view.MotionEvent;
 //import android.support.v7.app.AppCompatActivity;
+import com.quadbytes.theremin.Sounds;
 
 
 import com.quadbytes.theremin.databinding.ActivityMainBinding;
@@ -25,14 +27,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         System.loadLibrary("theremin");
     }
 
-    private native void toggleSound(boolean soundOn);
+    private MainViewModel viewModel;
 
-    private native void startEngine();
 
-    private native void stopEngine();
-    private native void changePitch(float multiplier);
+//    private native void toggleSound(boolean soundOn);
+//    private native void startEngine();
+//    private native void stopEngine();
+//    private native void changePitch(float multiplier);
 
-    private ActivityMainBinding binding;
+    private ActivityMainBinding activityMainBinding;
 
     Button toggleButton;
     Boolean soundOn = false;
@@ -43,18 +46,17 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        setContentView(R.layout.activity_main);
-        startEngine();
+        activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(activityMainBinding.getRoot());
+        Sounds.startEngine();
         toggleButton = (Button) findViewById(R.id.toggleButton);
         this.toggleButton.setOnClickListener(v -> {
             if (soundOn) {
-                toggleSound(false);
+                Sounds.toggleSound(false);
                 soundOn = false;
                 Log.d("BUTTONS", "User turned sound off");
             } else {
-                toggleSound(true);
+                Sounds.toggleSound(true);
                 soundOn = true;
                 Log.d("BUTTONS", "User turned sound on");
             }
@@ -68,7 +70,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 
     @Override
     public void onDestroy() {
-        stopEngine();
+        Sounds.stopEngine();
         super.onDestroy();
     }
 
@@ -80,9 +82,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public final void onSensorChanged(SensorEvent event) {
         float sensorVal = event.values[0];
-        Log.d("BUTTONS", "sensorVal: " + sensorVal);
+//        Log.d("BUTTONS", "sensorVal: " + sensorVal);
         // Do something with this sensor data.
-        changePitch(sensorVal);
+//        Sounds.changePitch(sensorVal);
     }
 
     @Override
@@ -99,4 +101,9 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         sensorManager.unregisterListener(this);
     }
     // end sensor
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

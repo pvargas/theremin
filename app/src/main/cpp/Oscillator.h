@@ -13,6 +13,7 @@ public:
     void setWaveOn(bool isWaveOn);
     void setSampleRate(int32_t sampleRate);
     void setSampleRateWithMultiplier(int32_t sampleRate, float multiplier);
+    void setAmplitude(float newAmplitude);
     void render(float *audioData, int32_t numFrames);
 
 private:
