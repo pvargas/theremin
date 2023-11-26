@@ -15,7 +15,8 @@ void Oscillator::setSampleRate(int32_t sampleRate) {
 }
 
 void Oscillator::setSampleRateWithMultiplier(int32_t sampleRate, float multiplier) {
-    phaseIncrement_ = (TWO_PI * ( FREQUENCY + (multiplier * 6))) / (double) sampleRate;
+//    phaseIncrement_ = (TWO_PI * ( FREQUENCY + (multiplier * 6))) / (double) sampleRate;
+    phaseIncrement_ = (TWO_PI *  multiplier) / (double) sampleRate;
 }
 
 void Oscillator::setAmplitude(float newAmplitude) {

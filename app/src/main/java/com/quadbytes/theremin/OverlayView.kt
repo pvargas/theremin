@@ -28,7 +28,6 @@ import com.google.mediapipe.tasks.vision.handlandmarker.HandLandmarkerResult
 import kotlin.math.max
 import kotlin.math.min
 import android.util.Log
-import com.quadbytes.theremin.Sounds
 
 class OverlayView(context: Context?, attrs: AttributeSet?) :
     View(context, attrs) {
@@ -80,7 +79,8 @@ class OverlayView(context: Context?, attrs: AttributeSet?) :
                 var y = handLandmarkerResult.landmarks().first().first().y()
                 var info = "$hand\tx:$x\t\t\ty:$y"
                 Log.e("handTrack", info)
-                Sounds.changePitch(100*(1-y))
+//                Sounds.changePitch(100*(1-y))
+                Sounds.changePitch(Pitch.quantizePitch(1-y))
                 Sounds.changeVolume(x)
 
                 HandLandmarker.HAND_CONNECTIONS.forEach {
