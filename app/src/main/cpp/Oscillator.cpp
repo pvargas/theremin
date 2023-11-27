@@ -8,7 +8,7 @@
 #define TWO_PI (3.14159 * 2)
 //#define AMPLITUDE 0.3
 #define FREQUENCY 440.0
-float amplitude = 0.3;
+//float amplitude = 0.3;
 
 void Oscillator::setSampleRate(int32_t sampleRate) {
     phaseIncrement_ = (TWO_PI * FREQUENCY) / (double) sampleRate;
@@ -20,7 +20,11 @@ void Oscillator::setSampleRateWithMultiplier(int32_t sampleRate, float multiplie
 }
 
 void Oscillator::setAmplitude(float newAmplitude) {
-    amplitude = newAmplitude;
+    if (newAmplitude > 1.55) {
+        amplitude_ = 1.55;
+    } else {
+        amplitude_ = newAmplitude;
+    }
 }
 
 void Oscillator::setWaveOn(bool isWaveOn) {
@@ -36,7 +40,7 @@ void Oscillator::render(float *audioData, int32_t numFrames) {
         if (isWaveOn_.load()) {
 
             // Calculates the next sample value for the sine wave.
-            audioData[i] = (float) (sin(phase_) * amplitude);
+            audioData[i] = (float) (sin(phase_) * amplitude_);
 
             // Increments the phase, handling wrap around.
             phase_ += phaseIncrement_;

@@ -1,5 +1,5 @@
 <resources>
     <string name="app_name">Theremin</string>
-    <string name="instructions">Move one hand up and down to adjust pitch, left and right to adjust dynamics (volume).</string>
+    <string name="instructions">Move one hand up and down to change pitch, or left and right to change volume.</string>
     <string name="menu_camera">Camera</string>
 </resources>

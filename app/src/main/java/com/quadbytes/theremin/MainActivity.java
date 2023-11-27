@@ -1,7 +1,6 @@
 package com.quadbytes.theremin;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProvider;
 
 import android.content.Context;
 import android.hardware.Sensor;
@@ -10,12 +9,9 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
-import android.view.MotionEvent;
+import android.widget.ToggleButton;
 //import android.support.v7.app.AppCompatActivity;
-import com.quadbytes.theremin.Sounds;
 
 
 import com.quadbytes.theremin.databinding.ActivityMainBinding;
@@ -28,18 +24,10 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     }
 
     private MainViewModel viewModel;
-
-
-//    private native void toggleSound(boolean soundOn);
-//    private native void startEngine();
-//    private native void stopEngine();
-//    private native void changePitch(float multiplier);
-
     private ActivityMainBinding activityMainBinding;
-
-    Button toggleButton;
+    Button soundToggleButton;
+//    ToggleButton scaleToggleButton;
     Boolean soundOn = false;
-
     private SensorManager sensorManager;
     private Sensor lightSensor;
 
@@ -49,8 +37,12 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         activityMainBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(activityMainBinding.getRoot());
         Sounds.startEngine();
-        toggleButton = (Button) findViewById(R.id.toggleButton);
-        this.toggleButton.setOnClickListener(v -> {
+        soundToggleButton = (Button) findViewById(R.id.soundToggleButton);
+//        scaleToggleButton = (ToggleButton) findViewById(R.id.scaleToggleButton);
+//        scaleToggleButton.setTextOff("Minor Scale");
+//        scaleToggleButton.setTextOn("Major Scale");
+//        scaleToggleButton.setChecked(scaleToggleButton.isChecked());
+        this.soundToggleButton.setOnClickListener(v -> {
             if (soundOn) {
                 Sounds.toggleSound(false);
                 soundOn = false;
@@ -61,6 +53,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                 Log.d("BUTTONS", "User turned sound on");
             }
         });
+
+
 
         // Get an instance of the sensor service, and use that to get an instance of
         // a particular sensor.

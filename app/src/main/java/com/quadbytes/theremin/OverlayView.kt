@@ -79,9 +79,9 @@ class OverlayView(context: Context?, attrs: AttributeSet?) :
                 var y = handLandmarkerResult.landmarks().first().first().y()
                 var info = "$hand\tx:$x\t\t\ty:$y"
                 Log.e("handTrack", info)
+                Sounds.changeVolume(x*2f)
 //                Sounds.changePitch(100*(1-y))
                 Sounds.changePitch(Pitch.quantizePitch(1-y))
-                Sounds.changeVolume(x)
 
                 HandLandmarker.HAND_CONNECTIONS.forEach {
                     canvas.drawLine(
