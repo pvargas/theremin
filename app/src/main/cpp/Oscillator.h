@@ -1,6 +1,4 @@
-//
-// Created by pablo on 10/14/2023.
-//
+
 
 #ifndef THEREMIN_OSCILLATOR_H
 #define THEREMIN_OSCILLATOR_H

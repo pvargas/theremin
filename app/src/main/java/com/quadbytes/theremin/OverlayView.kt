@@ -74,13 +74,18 @@ class OverlayView(context: Context?, attrs: AttributeSet?) :
                         pointPaint
                     )
                 }
-                var hand = handLandmarkerResult.handednesses().first().first().categoryName()
+
+//                var hand = handLandmarkerResult.handednesses().first().first().categoryName()
+//                var info = "$hand\tx:$x\t\t\ty:$y"
+
+                // TODO: currently only using the position of a single hand landmark;
+                // it might be better to take the average position of all landmarks
                 var x = handLandmarkerResult.landmarks().first().first().x()
                 var y = handLandmarkerResult.landmarks().first().first().y()
-                var info = "$hand\tx:$x\t\t\ty:$y"
-                Log.e("handTrack", info)
+                var info = "x:$x\t\t\ty:$y"
+                Log.d("hand landmark position", info)
+
                 Sounds.changeVolume(x*2f)
-//                Sounds.changePitch(100*(1-y))
                 Sounds.changePitch(Pitch.quantizePitch(1-y))
 
                 HandLandmarker.HAND_CONNECTIONS.forEach {

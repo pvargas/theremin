@@ -1,25 +1,21 @@
-//
-// Created by pablo on 10/14/2023.
-//
 
 #include "Oscillator.h"
 #include <math.h>
 
 #define TWO_PI (3.14159 * 2)
-//#define AMPLITUDE 0.3
 #define FREQUENCY 440.0
-//float amplitude = 0.3;
 
 void Oscillator::setSampleRate(int32_t sampleRate) {
     phaseIncrement_ = (TWO_PI * FREQUENCY) / (double) sampleRate;
 }
 
 void Oscillator::setSampleRateWithMultiplier(int32_t sampleRate, float multiplier) {
-//    phaseIncrement_ = (TWO_PI * ( FREQUENCY + (multiplier * 6))) / (double) sampleRate;
     phaseIncrement_ = (TWO_PI *  multiplier) / (double) sampleRate;
 }
 
 void Oscillator::setAmplitude(float newAmplitude) {
+    // TODO: this is the most simple approach; it works,
+    // but the jump in volume could be smoother
     if (newAmplitude > 1.55) {
         amplitude_ = 1.55;
     } else {

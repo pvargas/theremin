@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     @Override
     public final void onSensorChanged(SensorEvent event) {
         float sensorVal = event.values[0];
+        // uncomment to make the light sensor affect the pitch
 //        Log.d("BUTTONS", "sensorVal: " + sensorVal);
         // Do something with this sensor data.
 //        Sounds.changePitch(sensorVal);
